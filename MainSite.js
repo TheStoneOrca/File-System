@@ -31,7 +31,7 @@ app.post("/create", (req, res) => {
 
 app.get("/documents/ID=:i", (req, res) => {
     const id = req.params.i;
-    if (id) {
+    if (id <= documents.length) {
         res.render("Edit.ejs", {DocID: id})
     } else {
         res.sendStatus(404)
