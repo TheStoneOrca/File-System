@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome to Document <%=DocID %>!</h1>
+    <textarea oninput="SetLocalStorage()"></textarea>
+    <script>
+        function SetLocalStorage() {
+            localStorage.setItem("document_<%= DocID %>", document.querySelector("textarea").value);
+        }
+        function GetLocalStorage() {
+            let text = localStorage.getItem("document_<%= DocID %>")
+            document.querySelector("textarea").innerHTML = text
+        }
+        function WipeLocalStorage() {
+            localStorage.setItem("document_<%= DocID %>", "");
+        }
+        window.addEventListener("load", () => {
+            GetLocalStorage()
+        })
+    </script>
+    <button onclick="WipeLocalStorage()">Wipe Document</button>
+    
+    
+    <script src="Edit.js"></script>
+</body>
+</html>
